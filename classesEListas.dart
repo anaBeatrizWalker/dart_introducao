@@ -3,18 +3,21 @@ void main() {
   Carro carro2 = Carro("Gol");
   Carro carro3 = Carro("Argo");
 
-  final carros = [carro1, carro2, carro3];
-  //ou poderia ser: carros.add(carro1); carros.add(carro2); carros.add(carro3);
-  print("Carros disponíveis: $carros. Tamanho da Lista: ${carros.length}");
+  //map é um par de chave e valor, igual o json
+  final carrosMap = {"1": carro1, "2": carro2};
+  carrosMap["3"] = carro3;
 
-  //looping com For Each
-  for (Carro carroTemp in carros) {
-    print("Carro disponível: ${carroTemp.modelo}");
+  print("Lista: $carrosMap. Tamanho da Lista: ${carrosMap.length}");
+
+  //looping pela "key" do map
+  for (String id in carrosMap.keys) {
+    final carroTemp = carrosMap[id];
+    print(" >> ${carroTemp?.modelo}");
   }
 
-  //looping com convencional
-  for (int i = 0; i < carros.length; i++) {
-    print("Carro disponível: ${carros[i].modelo}");
+  //looping pelo "values" do map
+  for (Carro carroTemp in carrosMap.values) {
+    print(" >> ${carroTemp.modelo}");
   }
 }
 
